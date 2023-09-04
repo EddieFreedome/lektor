@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehicle;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class VehicleController extends Controller
 {
@@ -11,7 +14,11 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Vehicle::all();
+        // dd($users);
+        
+        return view('vehicles.index', compact('vehicles'));
+
     }
 
     /**
@@ -19,7 +26,8 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehicles.create');
+        
     }
 
     /**
@@ -27,7 +35,20 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        //     'password' => ['required', 'confirmed', Password::defaults()],
+        // ]);
+
+        // $vehicle = Vehicle::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+        // return redirect()->route('vehicles.index', $vehicle->id, compact($vehicle->id))->with('success', 'Vehicle created successfully.');
+
     }
 
     /**
@@ -43,7 +64,8 @@ class VehicleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('vehicles.edit');
+        
     }
 
     /**
@@ -59,6 +81,9 @@ class VehicleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+	    $vehicle->delete();
+	    return redirect()->route('vehicles.index')->with('success', 'vehicle deleted successfully');
+
     }
 }

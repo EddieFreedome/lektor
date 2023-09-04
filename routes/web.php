@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     
     Route::resource('users', UserController::class);
+    Route::resource('vehicles', VehicleController::class);
     // Route::resource('vehicles', VehicleController::class);
     // Route::resource('rents', Rent::class);
     // Route::resource('documents', Document::class);

@@ -40,9 +40,9 @@
     
             <!-- Immatricolation date -->
             <div class="mt-4">
-                <x-input-label for="immatricolation" :value="__('Immatricolation date')" />
-                <input type="date" id="immatricolation" class="block mt-1 w-full" type="email" name="immatricolation" :value="old('immatricolation')" required autocomplete="immatricolation" />
-                <x-input-error :messages="$errors->get('immatricolation')" class="mt-2" />
+                <x-input-label for="date_matriculation" :value="__('Immatricolation date')" />
+                <input type="date" id="date_matriculation" class="block mt-1 w-full" type="email" name="date_matriculation" :value="old('date_matriculation')" required autocomplete="date_matriculation" />
+                <x-input-error :messages="$errors->get('date_matriculation')" class="mt-2" />
             </div>
     
             <!-- Description -->

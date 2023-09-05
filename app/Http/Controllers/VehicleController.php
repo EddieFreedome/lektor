@@ -36,21 +36,23 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
-
+        
         $request->validate([
             'plate' => ['required', 'string', 'max:255'],
-            'immatricolation' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'date_matriculation' => ['required', 'string', 'max:255', 'unique:'.Vehicle::class],
             'description' => ['nullable', 'string', 'max:255'],
         ]);
+        
+        // dd($request->all());
+        $vehicle = Vehicle::create([
+            'plate' => $request->plate,
+            'date_matriculation' => $request->date_matriculation,
+            'description' => $request->description,
+        ]);
 
-        // $vehicle = Vehicle::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
+        
 
-        // return redirect()->route('vehicles.index', $vehicle->id, compact($vehicle->id))->with('success', 'Vehicle created successfully.');
+        return redirect()->route('vehicles.index')->with('success', 'Vehicle created successfully.');
 
     }
 
@@ -67,7 +69,10 @@ class VehicleController extends Controller
      */
     public function edit(string $id)
     {
-        return view('vehicles.edit');
+
+        $vehicle = Vehicle::where('id', $id)->first();
+
+        return view('vehicles.edit', compact('vehicle'));
         
     }
 
@@ -84,7 +89,7 @@ class VehicleController extends Controller
      */
     public function destroy(string $id)
     {
-        $vehicle = Vehicle::find($id);
+        $vehicle = Vehicle::findOrFail($id);
 	    $vehicle->delete();
 	    return redirect()->route('vehicles.index')->with('success', 'vehicle deleted successfully');
 

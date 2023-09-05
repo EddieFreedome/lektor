@@ -20,8 +20,9 @@
     <h1>USER EDIT</h1>
     <p>Modifica utente:</p>
 
-    <form method="PUT" action="{{route('update.user', $user->id) }}">
+    <form method="POST" action="{{route('users.update', $user->id) }}">
         @csrf
+        @method('PUT')
 
         <!-- Name -->
         <div>

@@ -56,7 +56,7 @@ class UserController extends Controller
 
         // Auth::login($user);
 
-        return redirect()->route('users.index', $user->id, compact($user->id))->with('success', 'Post created successfully.');
+        return redirect()->route('users.index')->with('success', 'Post created successfully.');
         // return redirect(RouteServiceProvider::HOME);
     }
 
@@ -73,18 +73,21 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        $user = User::where('id', $id)->first();
         
         
-        return view('users.edit');
+        return view('users.edit', compact('user'));
         
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $user)
     {
-        //
+        $this->authorize('update', $user);
+       
+        dd('update');
     }
 
     /**

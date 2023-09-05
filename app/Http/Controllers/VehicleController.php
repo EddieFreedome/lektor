@@ -69,8 +69,9 @@ class VehicleController extends Controller
      */
     public function edit(string $id)
     {
+        $vehicle = Vehicle::findOrFail($id);
 
-        $vehicle = Vehicle::where('id', $id)->first();
+        // $vehicle = Vehicle::where('id', $id)->first();
 
         return view('vehicles.edit', compact('vehicle'));
         
@@ -79,9 +80,20 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+
+        $request->validate([
+            'plate' => ['required', 'string', 'max:255'],
+            'date_matriculation' => ['required', 'string', 'max:255', ], // check for unique plate -> set unique here will not work at update:(plate is already saved and throws an error)
+            'description' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->update($request->all());
+        
+        return redirect()->back()->with('success', 'vehicle updated successfully');
     }
 
     /**

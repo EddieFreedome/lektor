@@ -32,7 +32,12 @@ Route::middleware('auth')->group(function () {
     // Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
     // Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::resource('users', UserController::class);
+    // Route::post('users', [UserController::class, 'update'])->name('update.user');
+
+
     Route::resource('vehicles', VehicleController::class);
+    // Route::put('vehicles', [VehicleController::class, 'update'])->name('update.vehicle');
+
     // Route::resource('vehicles', VehicleController::class);
     // Route::resource('rents', Rent::class);
     // Route::resource('documents', Document::class);

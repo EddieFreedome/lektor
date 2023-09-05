@@ -31,6 +31,17 @@
         <form method="POST" action="{{ route('documents.store') }}">
             @csrf
     
+            <div>
+                <label for="user">Utente</label>
+                <input type="date" id="user" class="block mt-1 w-full" name="user" :value="old('user')" required autocomplete="user" />
+            </div>
+
+            <div>
+                <label for="user">Veicolo</label>
+                <input type="date" id="user" class="block mt-1 w-full" name="user" :value="old('user')" required autocomplete="user" />
+            </div>
+
+
             <!-- Plate -->
             {{-- <div>
                 <x-input-label for="plate" :value="__('Vehicle plate')" />

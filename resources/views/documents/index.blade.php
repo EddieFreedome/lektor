@@ -12,7 +12,7 @@
 
     @foreach($documents as $document)
         <ul>
-            <li>{{ $document->plate }} | {{ $document->date_matriculation }} | {{ $document->description }} <br>
+            <li>{{ $document->id }} | {{ $document->user_id }} | {{ $document->user_id }} | {{ $document->type }} | {{ $document->expiry_date }} | {{ $document->description }} <br>
                 <a href="{{ route('documents.edit', $document->id) }}">Edit document</a>
 
                 <form action="{{ route('documents.destroy', $document->id) }}" method="post">

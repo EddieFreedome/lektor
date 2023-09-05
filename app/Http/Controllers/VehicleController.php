@@ -35,11 +35,14 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-        //     'password' => ['required', 'confirmed', Password::defaults()],
-        // ]);
+
+        dd($request->all());
+
+        $request->validate([
+            'plate' => ['required', 'string', 'max:255'],
+            'immatricolation' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'description' => ['nullable', 'string', 'max:255'],
+        ]);
 
         // $vehicle = Vehicle::create([
         //     'name' => $request->name,

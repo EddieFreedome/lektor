@@ -83,9 +83,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $user)
+    public function update(Request $request, $id)
     {
-        $this->authorize('update', $user);
+        $this->authorize('update', $id);
        
         dd('update');
     }

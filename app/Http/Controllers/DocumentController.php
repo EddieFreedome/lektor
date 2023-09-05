@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use Illuminate\Http\Request;
 
-class DocumentsController extends Controller
+class DocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $documents = Document::all();
+        
+        return view('documents.index', compact('documents'));
     }
 
     /**
@@ -19,7 +22,8 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create');
+        
     }
 
     /**
@@ -27,7 +31,23 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            // 'plate' => ['required', 'string', 'max:255'],
+            // 'date_matriculation' => ['required', 'string', 'max:255', 'unique:'.Vehicle::class],
+            // 'description' => ['nullable', 'string', 'max:255'],
+        ]);
+        
+        // dd($request->all());
+        $document = Document::create([
+            'plate' => $request->plate,
+            'date_matriculation' => $request->date_matriculation,
+            'description' => $request->description,
+        ]);
+
+        
+
+        return redirect()->route('vehicles.index')->with('success', 'Vehicle created successfully.');
+
     }
 
     /**

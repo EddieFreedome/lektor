@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
+// use App\Models\DocumentController;
 // use App\Models\Rent;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -28,15 +30,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     
-    // Route::resource('users', UserController::class);
-    // Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
-    // Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::resource('users', UserController::class);
-    // Route::post('users', [UserController::class, 'update'])->name('update.user');
-
-
     Route::resource('vehicles', VehicleController::class);
-    // Route::put('vehicles', [VehicleController::class, 'update'])->name('update.vehicle');
+    Route::resource('documents', DocumentController::class);
 
     // Route::resource('vehicles', VehicleController::class);
     // Route::resource('rents', Rent::class);

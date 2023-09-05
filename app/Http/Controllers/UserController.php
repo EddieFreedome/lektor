@@ -86,8 +86,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-       
-        dd('update');
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Password::defaults()],
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->back()->with('success', 'vehicle updated successfully');
+
     }
 
     /**

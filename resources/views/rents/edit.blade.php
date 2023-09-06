@@ -29,8 +29,8 @@
             </div>
         </nav>
 
-        <h1>RENT CREATE</h1>
-        <p>Crea nuovo noleggio:</p>
+        <h1>RENT EDIT</h1>
+        <p>Modifica noleggio:</p>
 
         <form method="POST" action="{{ route('rents.update', $rent->id) }}">
             @csrf

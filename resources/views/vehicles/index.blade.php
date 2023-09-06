@@ -7,6 +7,22 @@
     <title>Vehicles</title>
 </head>
 <body>
+
+    <nav class="navtop">
+    	<div>
+    		<h1>Website Title</h1>
+            <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
+
+            <h2>Seleziona modulo</h2>
+            <a href="/users"><i class="fas fa-home"></i>Users</a>
+            <a href="/vehicles"><i class="fas fa-home"></i>Vehicles</a>
+            <a href="/documents"><i class="fas fa-home"></i>Documents</a>
+            <a href="/rents"><i class="fas fa-home"></i>Rents</a>
+    		{{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}
+    	</div>
+    </nav>
+
+    
     <h1>VEHICLES INDEX</h1>
     <p>lista veicoli:</p>
 

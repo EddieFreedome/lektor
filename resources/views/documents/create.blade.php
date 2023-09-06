@@ -20,13 +20,14 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
-        {{-- <nav class="navtop">
+        <nav class="navtop">
             <div>
                 <h1>Website Title</h1>
-                <a href="index.php"><i class="fas fa-home"></i>Home</a>
-                <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a>
+                <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
+                <a href="/documents"><i class="fas fa-home"></i>Index</a>
+                {{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}
             </div>
-        </nav> --}}
+        </nav>
 
         <h1>DOCUMENT CREATE</h1>
         <p>Crea nuovo documento:</p>
@@ -74,27 +75,6 @@
 
             </div>
 
-            <!-- Plate -->
-            {{-- <div>
-                <x-input-label for="plate" :value="__('Vehicle plate')" />
-                <x-text-input id="plate" class="block mt-1 w-full" type="text" name="plate" :value="old('plate')" required autofocus autocomplete="plate" />
-                <x-input-error :messages="$errors->get('plate')" class="mt-2" />
-            </div>
-    
-            <!-- Immatricolation date -->
-            <div class="mt-4">
-                <x-input-label for="date_matriculation" :value="__('Immatricolation date')" />
-                <input type="date" id="date_matriculation" class="block mt-1 w-full" type="email" name="date_matriculation" :value="old('date_matriculation')" required autocomplete="date_matriculation" />
-                <x-input-error :messages="$errors->get('date_matriculation')" class="mt-2" />
-            </div>
-    
-            <!-- Description -->
-            <div>
-                <x-input-label for="description" :value="__('Vehicle description')" />
-                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus autocomplete="description" />
-                <x-input-error :messages="$errors->get('description')" class="mt-2" />
-            </div>
-            --}}
     
             <div class="flex items-center justify-end mt-4">
                 

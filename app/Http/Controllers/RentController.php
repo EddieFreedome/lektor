@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
 class RentController extends Controller
@@ -11,7 +12,11 @@ class RentController extends Controller
      */
     public function index()
     {
-        //
+        $rents = Rent::all();
+        // dd($users);
+        
+        return view('rents.index', compact('rents'));
+
     }
 
     /**
@@ -19,7 +24,8 @@ class RentController extends Controller
      */
     public function create()
     {
-        //
+        return view('rents.create');
+        
     }
 
     /**

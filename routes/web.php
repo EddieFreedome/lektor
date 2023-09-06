@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
 // use App\Models\DocumentController;
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('vehicles', VehicleController::class);
     Route::resource('documents', DocumentController::class);
+    Route::resource('rents', RentController::class);
 
     // Route::resource('vehicles', VehicleController::class);
     // Route::resource('rents', Rent::class);

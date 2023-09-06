@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rent;
+use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class RentController extends Controller
@@ -24,7 +26,9 @@ class RentController extends Controller
      */
     public function create()
     {
-        return view('rents.create');
+        $users = User::all();
+        $vehicles = Vehicle::all();
+        return view('rents.create', compact('users', 'vehicles'));
         
     }
 
@@ -33,7 +37,43 @@ class RentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+
+        $request->validate([
+            'user' => ['required', 'string', 'max:255'],
+            'vehicle' => ['required', 'integer'],
+            'rent_description' => ['nullable', 'string', 'max:255'],
+            'start_date_rent' => ['required', 'date', 'max:255'],
+            'end_date_rent' => ['nullable', 'date', 'max:255'],
+            'rent_cost' => ['nullable', 'string', 'max:255'],
+        ]);
+        
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $random_string_length = 7;
+
+        $string = '';
+        $max = strlen($characters) - 1;
+        for ($i = 0; $i < $random_string_length; $i++) {
+            $string .= $characters[mt_rand(0, $max)];
+        } //potrebbe generare stringhe gia' esistenti... aggiungere controlli e gestire casi
+
+        $practice_number = $string; 
+
+
+        // dd($request->all());
+        $rent = Rent::create([
+            'user_id' => $request->user,
+            'vehicle_id' => $request->vehicle,
+            'practice_number' => $practice_number,
+            'rent_type' => $request->rent_description,
+            'start_date_rent' => $request->start_date_rent,
+            'end_date_rent' => $request->end_date_rent,
+            'cost' => $request->rent_cost,
+        ]);
+
+        
+
+        return redirect()->route('rents.index')->with('success', 'Rent created successfully.');
     }
 
     /**

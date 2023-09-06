@@ -24,16 +24,17 @@
 
     
     <h1>RENTS INDEX</h1>
-    <a href="/rents/cerate"><i class="fas fa-home"></i>Crea nuovo noleggio</a>
+    <a href="/rents/create"><i class="fas fa-home"></i>Crea nuovo noleggio</a>
     <p>Lista noleggi:</p>
 
 
     @foreach($rents as $rent)
         <ul>
             <li>{{ $rent->id }} | {{ $rent->user_id }} | {{ $rent->vehicle_id }} | {{ $rent->practice_number }} | {{ $rent->rent_type }} | {{ $rent->start_date_rent }} | {{ $rent->end_date_rent }} | {{ $rent->cost }}<br>
-                <a href="{{ route('rents.edit', $usr->id) }}">Edit rent</a>
+                
+                <a href="{{ route('rents.edit', $rent->id) }}">Edit rent</a>
 
-                <form action="{{ route('rents.destroy', $rents->id) }}" method="post">
+                <form action="{{ route('rents.destroy', $rent->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete rent</button>

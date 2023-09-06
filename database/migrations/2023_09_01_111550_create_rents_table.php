@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vehicle_id');
-            $table->bigInteger('practice_number')->uniqid();
+            $table->string('practice_number')->uniqid();
             $table->string('rent_type'); //vacation rent, work rent
             $table->dateTime('start_date_rent');
             $table->dateTime('end_date_rent');

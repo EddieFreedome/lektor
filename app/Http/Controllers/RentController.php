@@ -89,7 +89,17 @@ class RentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $users = User::all();
+        $vehicles = Vehicle::all();
+        
+        $rent = Rent::findOrFail($id);
+        
+        $ass_user = User::where('id', $rent->user_id)->first();
+        $ass_vehicle = Vehicle::where('id', $rent->vehicle_id)->first();
+
+        return view('rents.edit', compact('rent', 'users', 'vehicles', 'ass_user', 'ass_vehicle'));
+        
     }
 
     /**

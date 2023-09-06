@@ -78,8 +78,8 @@ class DocumentController extends Controller
         $document = Document::findOrFail($id);
         $ass_user = User::where('id', $document->user_id)->first();
         $ass_vehicle = Vehicle::where('id', $document->vehicle_id)->first();
-        return view('documents.edit', compact('users', 'vehicles', 'document', 'ass_user', 'ass_vehicle'));
         
+        return view('documents.edit', compact('users', 'vehicles', 'document', 'ass_user', 'ass_vehicle'));
     }
 
     /**

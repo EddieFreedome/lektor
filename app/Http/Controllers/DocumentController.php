@@ -73,7 +73,13 @@ class DocumentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $users = User::all();
+        $vehicles = Vehicle::all();
+        $document = Document::findOrFail($id);
+        $ass_user = User::where('id', $document->user_id)->first();
+        $ass_vehicle = Vehicle::where('id', $document->vehicle_id)->first();
+        return view('documents.edit', compact('users', 'vehicles', 'document', 'ass_user', 'ass_vehicle'));
+        
     }
 
     /**
@@ -81,7 +87,27 @@ class DocumentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'document_type' => ['required', 'string', 'max:255'],
+            'user' => ['required', 'string', 'max:255'],
+            'vehicle' => ['required', 'integer'],
+            'document_description' => ['nullable', 'string', 'max:255'],
+            'expiry_date' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $document = Document::findOrFail($id);
+        // dd($request->all());
+
+
+        $document->type = $request->document_type;
+        $document->user_id = $request->user;
+        $document->vehicle_id = $request->vehicle;
+        $document->description = $request->document_description;
+        $document->expiry_date = $request->expiry_date;
+
+        $document->update();
+        
+        return redirect()->back()->with('success', 'vehicle updated successfully');
     }
 
     /**

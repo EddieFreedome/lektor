@@ -26,8 +26,9 @@
         <div>
             <label for="document_type">Tipo documento</label>
             <select id="document_type" class="block mt-1 w-full" name="document_type">
-                <option value="Patente">Patente</option>
-                <option value="Passaporto">Passaporto</option>
+                {{-- temporary solution while creating document_types table for looping every type possible and mark the saved one as selected --}}
+                <option value="Patente"  {{ ( $document->type === 'Patente') ? 'selected' : '' }}>Patente</option>
+                <option value="Passaporto"  {{ ( $document->type === 'Passaporto') ? 'selected' : '' }}>Passaporto</option>
             </select>
         </div>
 

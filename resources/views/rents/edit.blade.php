@@ -32,9 +32,10 @@
         <h1>RENT CREATE</h1>
         <p>Crea nuovo noleggio:</p>
 
-        <form method="POST" action="{{ route('rents.store') }}">
+        <form method="POST" action="{{ route('rents.update') }}">
             @csrf
-
+            @method('PUT')
+            
             <div>
                 
                 <label for="user">Utente</label>

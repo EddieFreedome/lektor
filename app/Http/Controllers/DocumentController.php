@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -22,7 +24,10 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('documents.create');
+        $users = User::all();
+        $vehicles = Vehicle::all();
+        
+        return view('documents.create', compact('users', 'vehicles'));
         
     }
 
@@ -31,22 +36,27 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            // 'plate' => ['required', 'string', 'max:255'],
-            // 'date_matriculation' => ['required', 'string', 'max:255', 'unique:'.Vehicle::class],
-            // 'description' => ['nullable', 'string', 'max:255'],
+            'document_type' => ['required', 'string', 'max:255'],
+            'user' => ['required', 'string', 'max:255'],
+            'vehicle' => ['required', 'integer'],
+            'document_description' => ['nullable', 'string', 'max:255'],
+            'expiry_date' => ['nullable', 'string', 'max:255'],
         ]);
         
         // dd($request->all());
         $document = Document::create([
-            'plate' => $request->plate,
-            'date_matriculation' => $request->date_matriculation,
-            'description' => $request->description,
+            'type' => $request->document_type,
+            'user_id' => $request->user,
+            'vehicle_id' => $request->vehicle,
+            'description' => $request->document_description,
+            'expiry_date' => $request->expiry_date,
         ]);
 
         
 
-        return redirect()->route('vehicles.index')->with('success', 'Vehicle created successfully.');
+        return redirect()->route('documents.index')->with('success', 'Document created successfully.');
 
     }
 
@@ -79,6 +89,9 @@ class DocumentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $document = Document::findOrFail($id);
+	    $document->delete();
+
+	    return redirect()->route('documents.index')->with('success', 'vehicle deleted successfully');
     }
 }

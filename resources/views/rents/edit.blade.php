@@ -32,17 +32,19 @@
         <h1>RENT CREATE</h1>
         <p>Crea nuovo noleggio:</p>
 
-        <form method="POST" action="{{ route('rents.update') }}">
+        <form method="POST" action="{{ route('rents.update', $rent->id) }}">
             @csrf
             @method('PUT')
-            
+
             <div>
                 
                 <label for="user">Utente</label>
                 
                 <select name="user" id="user">
                     @foreach($users as $user)
-                        <option value="{{ $user->id }} {{ ( $rent->user_id === $user->id ) ? 'selected' : '' }}">{{ $user->email }} | {{$user->name}}</option>
+                        <option value="{{ $user->id }}"  {{ ( $rent->user_id === $user->id ) ? 'selected' : '' }}>
+                            {{ $user->email }} | {{$user->name}}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -51,7 +53,9 @@
                 <label for="vehicle">Veicolo</label>
                 <select id="vehicle" class="block mt-1 w-full" name="vehicle" :value="old('vehicle')" required autocomplete="vehicle">
                     @foreach($vehicles as $vehicle)
-                        <option value="{{ $vehicle->id }}" {{ ( $rent->vehicle_id === $vehicle->id ) ? 'selected' : '' }}>{{ $vehicle->plate }} | {{$vehicle->id}}</option>
+                        <option value="{{ $vehicle->id }}" {{ ( $rent->vehicle_id === $vehicle->id ) ? 'selected' : '' }}>
+                            {{ $vehicle->plate }} | {{$vehicle->id}}
+                        </option>
                     @endforeach
                 
                 </select>

@@ -107,7 +107,34 @@ class RentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $practice_number = $this->generatePracticeNumber();
+
+        $request->validate([
+            'user' => ['required', 'string', 'max:255'],
+            'vehicle' => ['required', 'integer'],
+            'rent_description' => ['nullable', 'string', 'max:255'],
+            'start_date_rent' => ['required', 'date'],
+            'end_date_rent' => ['nullable', 'date'],
+            'rent_cost' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        $rent = Rent::findOrFail($id);
+        // dd($request->all());
+
+
+        $rent->user_id = $request->user;
+        $rent->vehicle_id = $request->vehicle;
+        $rent->practice_number = $practice_number;
+        $rent->rent_type = $request->rent_description;
+        $rent->start_date_rent = $request->start_date_rent;
+        $rent->end_date_rent = $request->end_date_rent;
+        $rent->cost = $request->rent_cost;
+
+        $rent->update();
+        
+        return redirect()->back()->with('success', 'Rent updated successfully');
+
     }
 
     /**
@@ -115,6 +142,24 @@ class RentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $rent = Rent::findOrFail($id);
+        $rent->delete();
+
+        return redirect()->back()->with('Rent deleted successfully');
+    }
+
+    public function generatePracticeNumber() {
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $random_string_length = 7;
+
+        $string = '';
+        $max = strlen($characters) - 1;
+        for ($i = 0; $i < $random_string_length; $i++) {
+            $string .= $characters[mt_rand(0, $max)];
+        } //potrebbe generare stringhe gia' esistenti... aggiungere controlli e gestire casi
+
+        $practice_number = $string;
+
+        return $practice_number;
     }
 }

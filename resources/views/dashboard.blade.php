@@ -27,9 +27,39 @@
                 >
             </a>
 
-        
-            
         </div>
     </nav>
+
+
+
+
+    <main class="pt-20">
+        <div class="container w-full mx-auto ">
+            <h1 class="text-center text-2xl pb-10">Seleziona Modulo</h1>
+            
+            
+
+            <ul class="flex justify-between">
+            
+                <a href="/users" class="text-xl">
+                    <li class="bg-red-500  text-white rounded-lg px-10 py-3     ">Users</a></li>
+                </a>
+                <a href="/vehicles" class="text-xl">
+                    <li class="bg-red-500  text-white rounded-lg px-10 py-3     ">Vehicles</a></li>
+                </a>
+                <a href="/documents" class="text-xl">
+                    <li class="bg-red-500  text-white rounded-lg px-10 py-3     ">Documents</a></li>
+                </a>
+                <a href="/rents" class="text-xl">
+                    <li class="bg-red-500  text-white rounded-lg px-10 py-3     ">Rents</a></li>
+                </a>
+            
+            
+            
+            </ul>
+
+        </div>
+
+    </main>
 </body>
 </html>

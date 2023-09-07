@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- @vite('resources/css/app.css')
+    @vite('resources/js/app.js') --}}
+
     <title>Vehicles</title>
 </head>
 <body>
@@ -12,7 +15,7 @@
     	<div>
     		<h1>Lektor Navigation</h1>
             <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
-    		<a href="read.php"><i class="fas fa-address-book"></i>Contacts</a>
+    		<a href="/vehicles"><i class="fas fa-address-list"></i>Index</a>
     	</div>
     </nav>
 

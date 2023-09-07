@@ -31,7 +31,7 @@
     @foreach($vehicles as $vehicle)
         <ul>
             <li>{{ $vehicle->plate }} | {{ $vehicle->date_matriculation }} | {{ $vehicle->description }} <br>
-                <a href="{{ route('vehicles.edit', $vehicle->id) }}">Edit user</a>
+                <a href="{{ route('vehicles.edit', $vehicle->id) }}">Edit vehicle</a>
 
                 <form action="{{ route('vehicles.destroy', $vehicle->id) }}" method="post">
                     @csrf

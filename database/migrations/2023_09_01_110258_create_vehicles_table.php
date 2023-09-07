@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('plate');
             $table->date('date_matriculation');
             $table->string('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

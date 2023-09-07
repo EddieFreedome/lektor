@@ -14,16 +14,23 @@ return new class extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
-            $table->bigInteger('vehicle_id');
-            $table->bigInteger('practice_number')->uniqid();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->string('practice_number')->uniqid();
             $table->string('rent_type'); //vacation rent, work rent
             $table->dateTime('start_date_rent');
             $table->dateTime('end_date_rent');
             $table->float('cost');
             // $table->string('description');
-
+            $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::table('rents', function (Blueprint $table) {
+            
+            // $table->foreignId('user_id')->constrained();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
         });
     }
 

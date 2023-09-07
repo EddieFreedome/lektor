@@ -8,9 +8,9 @@
 </head>
 <body>
 
+    <h1>Lektor Navigation</h1>
     <nav class="navtop">
     	<div>
-    		<h1>Website Title</h1>
             <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
 
             <h2>Seleziona modulo</h2>

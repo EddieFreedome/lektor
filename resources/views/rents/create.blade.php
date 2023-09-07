@@ -22,7 +22,7 @@
 	<body>
         <nav class="navtop">
             <div>
-                <h1>Website Title</h1>
+                <h1>Lektor Navigation</h1>
                 <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
                 <a href="/rents"><i class="fas fa-list"></i>Index</a>
                 {{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}
@@ -81,7 +81,7 @@
 
     
             <div class="flex items-center justify-end mt-4">
-                <button type="submit">Create document</button>
+                <button type="submit">Create rent</button>
             </div> 
         </form>
 

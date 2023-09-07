@@ -7,9 +7,9 @@
     <title>Documents</title>
 </head>
 <body>
+    <h1>Lektor Navigation</h1>
     <nav class="navtop">
     	<div>
-    		<h1>Website Title</h1>
             <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
 
             <h2>Seleziona modulo</h2>
@@ -23,6 +23,8 @@
 
 
     <h1>DOCUMENTS INDEX</h1>
+    <a href="/documents/create"><i class="fas fa-home"></i>Crea nuovo documento</a>
+
     <p>lista documenti:</p>
 
     @foreach($documents as $document)

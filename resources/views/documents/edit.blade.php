@@ -10,7 +10,7 @@
     
     <nav class="navtop">
     	<div>
-    		<h1>Website Title</h1>
+    		<h1>Lektor Navigation</h1>
             <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
             <a href="/documents"><i class="fas fa-home"></i>Index</a>
     		{{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}

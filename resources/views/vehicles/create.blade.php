@@ -28,6 +28,19 @@
             </div>
         </nav> --}}
 
+        <nav class="navtop">
+            <div>
+                <h1>Lektor Navigation</h1>
+                <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
+                <a href="/documents"><i class="fas fa-list"></i>Index</a>
+                {{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}
+            </div>
+        </nav>
+
+        <h1>VEHICLE CREATE</h1>
+        <p>Crea nuovo veicolo:</p>
+
+
         <form method="POST" action="{{ route('vehicles.store') }}">
             @csrf
     

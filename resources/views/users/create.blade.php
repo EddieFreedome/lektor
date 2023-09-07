@@ -20,13 +20,18 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
-        {{-- <nav class="navtop">
+        <nav class="navtop">
             <div>
-                <h1>Website Title</h1>
-                <a href="index.php"><i class="fas fa-home"></i>Home</a>
-                <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a>
+                <h1>Lektor Navigation</h1>
+                <a href="/dashboard"><i class="fas fa-home"></i>Home</a>
+                <a href="/documents"><i class="fas fa-list"></i>Index</a>
+                {{-- <a href="read.php"><i class="fas fa-address-book"></i>Contacts</a> --}}
             </div>
-        </nav> --}}
+        </nav>
+    
+    
+        <h1>User Create</h1>
+        <p>Crea utente:</p>
 
         <form method="POST" action="{{ route('users.store') }}">
             @csrf
@@ -69,10 +74,7 @@
             </div>
     
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-    
+                  
                 
                 <button type="submit">Register</button>
             </div>
